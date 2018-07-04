@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "helpful summary of your project, less than 80 characters",
-    "repository": "https://github.com/user/project.git",
+    "summary": "A library to facilitate using Elm union types as `Enum`s",
+    "repository": "https://github.com/genthaler/elm-enum.git",
     "license": "BSD3",
     "source-directories": [
         "src"
