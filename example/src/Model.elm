@@ -1,0 +1,51 @@
+module Model exposing (Model, init, Msg(..), DataType, dataTypeEnum, defaultDataType)
+
+import Enum exposing (..)
+
+
+type alias Model =
+    { dataType : DataType
+    , message : String
+    }
+
+
+init : Model
+init =
+    { dataType = Text
+    , message = ""
+    }
+
+
+type DataType
+    = Text
+    | Date
+    | Email
+    | Address
+    | Postcode
+    | State
+    | Gender
+
+
+dataTypeEnum : Enum DataType
+dataTypeEnum =
+    { values =
+        [ Text
+        , Date
+        , Email
+        , Address
+        , Postcode
+        , State
+        , Gender
+        ]
+    , toString = Basics.toString
+    }
+
+
+defaultDataType : DataType
+defaultDataType =
+    Text
+
+
+type Msg
+    = NoOp
+    | SetDataType String
