@@ -19,8 +19,6 @@ In the admittedly simple example project included, the Enum never had a reason t
 
 [![Travis-CI build Status](https://travis-ci.org/genthaler/elm-enum.svg?branch=master)](https://travis-ci.org/genthaler/elm-enum)
 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/tn79mfap9v0fg2qb/branch/master?svg=true)](https://ci.appveyor.com/project/genthaler/elm-enum/branch/master)
-
-[![Dependency CI Status](https://dependencyci.com/github/genthaler/elm-enum/badge?style=flat)](https://dependencyci.com/github/genthaler/elm-enum/badge?style=flat)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/870r9h4ig31eg6ns/branch/master?svg=true)](https://ci.appveyor.com/project/genthaler/elm-enum/branch/master)
 
 [![](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.com)
