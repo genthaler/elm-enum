@@ -11,17 +11,12 @@ init =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( case msg of
-        SetDataType dataTypeString ->
-            (case Enum.findEnumValue Model.dataTypeEnum dataTypeString of
-                Ok dataType ->
-                    Model dataType (.toString Model.dataTypeEnum <| dataType)
-
-                Err err ->
-                    { model | message = err }
-            )
+    ( (case msg of
+        SetDataType dataType ->
+            Model dataType (Enum.toString Model.dataTypeEnum dataType)
 
         NoOp ->
             model
+      )
     , Cmd.none
     )

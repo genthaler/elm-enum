@@ -1,7 +1,7 @@
-module Enum exposing (Enum, makeEnum, findEnumValue, decodeEnumValue, onEnumInput, enumSelect)
+module Enum exposing (Enum, makeEnum, toString, findEnumValue, decodeEnumValue, onEnumInput, enumSelect)
 
 {-|
-@docs Enum, makeEnum, findEnumValue, decodeEnumValue, onEnumInput, enumSelect
+@docs Enum, makeEnum, toString, findEnumValue, decodeEnumValue, onEnumInput, enumSelect
 
 -}
 
@@ -96,7 +96,7 @@ decodeEnumValue enum stringValue =
             Decode.fail err
 
 
-{-| Converts
+{-| Creates an input handler for the `Enum`.
 
 -}
 onEnumInput : Enum a -> (a -> msg) -> Html.Attribute msg
@@ -110,7 +110,7 @@ onEnumInput enum tagger =
         Html.Events.on "input" decodeTargetValue
 
 
-{-| Constructs an `<option>`` element
+{-| Constructs an `<option>` element
 
 -}
 enumOption : Enum a -> a -> a -> Html.Html msg
@@ -120,7 +120,7 @@ enumOption enum selectedValue value =
         [ Html.text <| toString enum value ]
 
 
-{-| Takes an `Enum`, a Msg and a currently selected value,
+{-| Takes an `Enum`, a Msg that tags the `Enum`'s underlying union type, and a currently selected value,
 and constructs a `<select>` element.
 
 ```
@@ -130,12 +130,12 @@ view model =
 
 Take a look at the example project for a simple use-case.
 -}
-enumSelect : Enum a -> (String -> msg) -> a -> Html.Html msg
+enumSelect : Enum a -> (a -> msg) -> a -> Html.Html msg
 enumSelect enum msg selectedValue =
     let
         (Enum values _) =
             enum
     in
         Html.select
-            [ Html.Events.onInput msg ]
+            [ onEnumInput enum msg ]
             (List.map (enumOption enum selectedValue) values)

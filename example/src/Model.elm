@@ -42,4 +42,4 @@ dataTypeEnum =
 
 type Msg
     = NoOp
-    | SetDataType String
+    | SetDataType DataType
