@@ -1,0 +1,25 @@
+environment:
+  matrix:
+  - nodejs_version: "10.5.0"
+
+platform:
+  - x64
+
+matrix:
+  fast_finish: true
+
+install:
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:Platform
+  - node --version
+  - npm --version
+  - npm install elm@latest
+  - elm --version
+  - npm install elm-test@latest
+  - elm-test --version
+
+test_script:
+  - elm-package install --yes
+  - elm-make --yes
+  - elm-test
+
+build: off

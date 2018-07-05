@@ -5,14 +5,21 @@ module Enum exposing (Enum, makeEnum, toString, findEnumValue, decodeEnumValue, 
 The implementation was guided initially by [this Discourse discussion](https://discourse.elm-lang.org/t/how-to-do-enums-in-elm/1353),
 then by usage in my personal projects.
 
+
 ## Basic Enum helpers
+
 @docs Enum, makeEnum, toString, findEnumValue
 
+
 ## JSON-related helpers
+
 @docs decodeEnumValue
 
+
 ## HTML-related helpers
+
 @docs onEnumInput, enumSelect
+
 -}
 
 import Json.Decode as Decode
@@ -29,6 +36,7 @@ type Enum a
 
 
 {-| `Enum` constructor.
+
 ```
 type DataType
     = Text
@@ -53,6 +61,7 @@ dataTypeEnum =
         ]
         Basics.toString
 ```
+
 -}
 makeEnum : List a -> (a -> String) -> Enum a
 makeEnum values enumToString =
@@ -60,6 +69,7 @@ makeEnum values enumToString =
 
 
 {-| Return the string representation of the `Enum`.
+
 ```
 type DataType
     = Text
@@ -68,14 +78,15 @@ enum = makeEnum [Text] Basics.toString
 
 (Enum.toString enum Text) == "Text"
 ```
+
 -}
 toString : Enum a -> a -> String
 toString (Enum _ enumToString) value =
     enumToString value
 
 
-{-|
- If possible, return the union type tag from the String representation.
+{-| If possible, return the union type tag from the String representation.
+
 ```
 type DataType
     = Text
@@ -85,6 +96,7 @@ enum = makeEnum [Text] Basics.toString
 (Enum.findEnumValue enum "Text") == Ok Text
 (Enum.findEnumValue enum "Foo") == Err "Foo"
 ```
+
 -}
 findEnumValue : Enum a -> String -> Result String a
 findEnumValue (Enum values enumToString) value =
@@ -107,7 +119,6 @@ decodeEnumValue enum stringValue =
 
 
 {-| Creates an input handler for the `Enum`.
-
 -}
 onEnumInput : Enum a -> (a -> msg) -> Html.Attribute msg
 onEnumInput enum tagger =
@@ -121,7 +132,6 @@ onEnumInput enum tagger =
 
 
 {-| Constructs an `<option>` element
-
 -}
 enumOption : Enum a -> a -> a -> Html.Html msg
 enumOption enum selectedValue value =
@@ -139,6 +149,7 @@ view model =
 ```
 
 Take a look at the example project for a simple use-case.
+
 -}
 enumSelect : Enum a -> (a -> msg) -> a -> Html.Html msg
 enumSelect enum msg selectedValue =
