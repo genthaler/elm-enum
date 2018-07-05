@@ -23,5 +23,5 @@ all =
                             Expect.fail err
 
                         Ok dataType ->
-                            Expect.equal (enum.toString dataType) "Text"
+                            Expect.equal (Enum.toString enum dataType) "Text"
         ]
