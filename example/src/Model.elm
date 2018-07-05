@@ -28,7 +28,7 @@ type DataType
 
 dataTypeEnum : Enum DataType
 dataTypeEnum =
-    { values =
+    Enum.makeEnum
         [ Text
         , Date
         , Email
@@ -37,8 +37,7 @@ dataTypeEnum =
         , State
         , Gender
         ]
-    , toString = Basics.toString
-    }
+        Basics.toString
 
 
 type Msg
