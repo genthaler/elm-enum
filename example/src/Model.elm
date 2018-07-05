@@ -1,4 +1,4 @@
-module Model exposing (Model, init, Msg(..), DataType, dataTypeEnum, defaultDataType)
+module Model exposing (Model, init, Msg(..), DataType, dataTypeEnum)
 
 import Enum exposing (..)
 
@@ -39,11 +39,6 @@ dataTypeEnum =
         ]
     , toString = Basics.toString
     }
-
-
-defaultDataType : DataType
-defaultDataType =
-    Text
 
 
 type Msg
