@@ -1,8 +1,18 @@
 module Enum exposing (Enum, makeEnum, toString, findEnumValue, decodeEnumValue, onEnumInput, enumSelect)
 
-{-|
-@docs Enum, makeEnum, toString, findEnumValue, decodeEnumValue, onEnumInput, enumSelect
+{-| Enum is an implementation of OO style Enums in Elm.
 
+The implementation was guided initially by [this Discourse discussion](https://discourse.elm-lang.org/t/how-to-do-enums-in-elm/1353),
+then by usage in my personal projects.
+
+## Basic Enum helpers
+@docs Enum, makeEnum, toString, findEnumValue
+
+## JSON-related helpers
+@docs decodeEnumValue
+
+## HTML-related helpers
+@docs onEnumInput, enumSelect
 -}
 
 import Json.Decode as Decode
@@ -12,7 +22,7 @@ import Html.Events
 
 
 {-| Union type representing an `Enum`. Note that this an [opaque type](https://medium.com/@ckoster22/advanced-types-in-elm-opaque-types-ec5ec3b84ed2);
-use #makeEnum to construct `Enum`s.
+use [`makeEnum`](#makeEnum) to construct `Enum`s.
 -}
 type Enum a
     = Enum (List a) (a -> String)
