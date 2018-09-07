@@ -12,7 +12,7 @@ type alias Model =
 init : Model
 init =
     { dataType = Text
-    , message = ""
+    , message = Enum.toString dataTypeEnum Text
     }
 
 
@@ -37,7 +37,7 @@ dataTypeEnum =
         , State
         , Gender
         ]
-        Basics.toString
+        Debug.toString
 
 
 type Msg
