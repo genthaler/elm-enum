@@ -7,17 +7,12 @@ before_script:
 - git remote set-url origin "https://${GH_TOKEN}@github.com/genthaler/elm-enum.git"
 - npm install -g elm@latest
 - elm --version
-- npm install -g elm-test@latest
+- npm install -g elm-test@beta
 - elm-test --version
 
 script:
-- elm-package install --yes
-- elm-make --yes
-- elm-test
+- cd example && elm-test
 
-cache:
-  directories:
-  - elm-stuff/packages
 env:
   global:
   - GH_REF: github.com/genthaler/elm-enum.git

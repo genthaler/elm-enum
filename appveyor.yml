@@ -14,12 +14,10 @@ install:
   - npm --version
   - npm install -g elm@latest
   - elm --version
-  - npm install -g elm-test@latest
+  - npm install -g elm-test@beta
   - elm-test --version
 
 test_script:
-  - elm-package install --yes
-  - elm-make --yes
-  - elm-test
+  - cd example && elm-test
 
 build: off
