@@ -26,7 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
     - run: npm install -g elm@latest
     - run: npx elm --version
     - run: npx install -g elm-test@beta
